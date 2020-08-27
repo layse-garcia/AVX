@@ -14,20 +14,24 @@
 #include <immintrin.h>
 #include <stdio.h>
 
-// _mm256_load_pd
-// _mm256_store_pd
-
 int main() {
-    double a = [6.0, 6.0, 6.0, 6.0];
-    double b = [2.0, 2.0, 2.0, 2.0];
+    __attribute__ ((aligned (32))) double a[4], b[4], c[4];
 
-    __m256d veca = _mm256_load_pd(veca);
-    __m256d vecb = _mm256_load_pd(vecb);
+    a[0] = 6.0;
+    a[1] = 6.0;
+    a[2] = 6.0;
+    a[3] = 6.0;
 
-    __m256d vecc = _mm256_add_pd(veca, vecb);
+    b[0] = 2.0;
+    b[1] = 2.0;
+    b[2] = 2.0;
+    b[3] = 2.0;
 
-    double c = _mm256_store_pd(vecc);
+    __m256d vecA = _mm256_load_pd(a);
+    __m256d vecB = _mm256_load_pd(b);
+    __m256d vecC = _mm256_add_pd(vecA, vecB);
 
+    _mm256_store_pd(c, vecc);
 
 	printf("%.2f %.2f %.2f %.2f\n",
 		   c[0], c[1], c[2], c[3]);

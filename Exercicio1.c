@@ -18,11 +18,11 @@
 
 // 8 floats
 void floats8() {
-    __m256 veca = _mm256_setr_ps(6.0, 6.0, 6.0, 6.0, 6.0, 6.0, 6.0, 6.0);
-    __m256 vecb = _mm256_setr_ps(2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0);
-    __m256 vecc = _mm256_setr_ps(7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0);
+    __m256 vecA = _mm256_setr_ps(6.0, 6.0, 6.0, 6.0, 6.0, 6.0, 6.0, 6.0);
+    __m256 vecB = _mm256_setr_ps(2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0);
+    __m256 vecC = _mm256_setr_ps(7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0);
 
-    __m256 result = _mm256_fmadd_ps(veca, vecb, vecc);
+    __m256 result = _mm256_fmadd_ps(vecA, vecB, vecC);
 
     float* f = (float*)&result;
     printf("%f %f %f %f %f %f %f %f\n",
@@ -31,11 +31,11 @@ void floats8() {
 
 // 4 doubles
 void doubles4() {
-    __m256d veca = _mm256_setr_pd(6.0, 6.0, 6.0, 6.0);
-    __m256d vecb = _mm256_setr_pd(2.0, 2.0, 2.0, 2.0);
-    __m256d vecc = _mm256_setr_pd(7.0, 7.0, 7.0, 7.0);
+    __m256d vecA = _mm256_setr_pd(6.0, 6.0, 6.0, 6.0);
+    __m256d vecB = _mm256_setr_pd(2.0, 2.0, 2.0, 2.0);
+    __m256d vecC = _mm256_setr_pd(7.0, 7.0, 7.0, 7.0);
 
-    __m256d result = _mm256_fmadd_pd(veca, vecb, vecc);
+    __m256d result = _mm256_fmadd_pd(vecA, vecB, vecC);
 
     double* f = (double*)&result;
     printf("%.2f %.2f %.2f %.2f\n",
@@ -44,11 +44,11 @@ void doubles4() {
 
 // 8 inteiros
 void inteiros8() {
-    __m256 veca = _mm256_setr_ps(6, 6, 6, 6, 6, 6, 6, 6);
-    __m256 vecb = _mm256_setr_ps(2, 2, 2, 2, 2, 2, 2, 2);
-    __m256 vecc = _mm256_setr_ps(7, 7, 7, 7, 7, 7, 7, 7);
+    __m256 vecA = _mm256_setr_ps(6, 6, 6, 6, 6, 6, 6, 6);
+    __m256 vecB = _mm256_setr_ps(2, 2, 2, 2, 2, 2, 2, 2);
+    __m256 vecC = _mm256_setr_ps(7, 7, 7, 7, 7, 7, 7, 7);
 
-    __m256 result = _mm256_fmadd_ps(veca, vecb, vecc);
+    __m256 result = _mm256_fmadd_ps(vecA, vecB, vecC);
 
     float* f = (float*)&result;
     printf("%.0f %.0f %.0f %.0f %.0f %.0f %.0f %.0f\n",
