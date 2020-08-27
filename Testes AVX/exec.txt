@@ -1,2 +1,4 @@
 gcc -mavx -o hello_avx hello_avx.c
 ./hello_avx
+
+gcc -mavx2 -mfma -o Exercicio1 Exercicio1.c
