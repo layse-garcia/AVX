@@ -14,27 +14,38 @@
 #include <immintrin.h>
 #include <stdio.h>
 
-int main() {
+// Método que recebe os valores dos vetores de DOUBLE
+void executaLoad_Soma_Store() {
     __attribute__ ((aligned (32))) double a[4], b[4], c[4];
 
-    a[0] = 6.0;
-    a[1] = 6.0;
-    a[2] = 6.0;
-    a[3] = 6.0;
+    printf("Digite 2 vetores double com 4 elementos cada.\nCada elemento deve ser separado por um espaço em branco e cada vetor por uma quebra de linha.\n");
+    fflush(stdout);
 
-    b[0] = 2.0;
-    b[1] = 2.0;
-    b[2] = 2.0;
-    b[3] = 2.0;
+    for(int j = 0; j < 2; j++) {
+        for(int i = 0; i < 4; i++) {
+            if (j == 0) {
+                scanf("%Le",&a[i]);
+            }
+            else {
+                scanf("%Le",&b[i]);
+            }
+        }
+    }
 
     __m256d vecA = _mm256_load_pd(a);
     __m256d vecB = _mm256_load_pd(b);
     __m256d vecC = _mm256_add_pd(vecA, vecB);
 
-    _mm256_store_pd(c, vecc);
+    _mm256_store_pd(c, vecC);
 
-	printf("%.2f %.2f %.2f %.2f\n",
-		   c[0], c[1], c[2], c[3]);
+printf("Resultado: \n");
+    printf("%f %f %f %f\n",
+           c[0], c[1], c[2], c[3]);
+}
+
+// Função Principal
+int main() {
+    executaLoad_Soma_Store();
 
     return 0;
 }

@@ -14,6 +14,7 @@
 #include <immintrin.h>
 #include <stdio.h>
 
+// Função Principal
 int main() {
 
     return 0;

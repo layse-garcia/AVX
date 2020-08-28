@@ -14,7 +14,40 @@
 #include <immintrin.h>
 #include <stdio.h>
 
-int main() {
+// Método que recebe os valores dos vetores de DOUBLE
+void somaHorizontal() {
+    __m256d vecA, vecB, vecC;
 
+    double vecD[4];
+
+    printf("Digite 2 vetores double com 4 elementos cada.\nCada elemento deve ser separado por um espaço em branco e cada vetor por uma quebra de linha.\n");
+    fflush(stdout);
+
+    for(int j = 0; j < 2; j++) {
+        for(int i = 0; i < 4; i++) {
+            scanf("%Le",&vecD[i]);
+        }
+        if (j == 0) {
+            vecA = _mm256_setr_pd(vecD[0], vecD[1], vecD[2], vecD[3]);
+        }
+        else {
+            vecB = _mm256_setr_pd(vecD[0], vecD[1], vecD[2], vecD[3]);
+        }
+    }
+
+    vecC = _mm256_hadd_pd(vecA, vecB);
+
+    double* f = (double*)&vecC;
+    
+    printf("Resultado: \n");
+    printf("%f %f %f %f\n",
+      f[0], f[1], f[2], f[3]);
+
+    printf("\n");
+}
+
+// Função Principal
+int main() {
+    somaHorizontal();
     return 0;
 }
