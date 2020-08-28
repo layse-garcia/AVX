@@ -1,0 +1,279 @@
+\documentclass[oneside,a4paper,12pt]{article}
+
+\usepackage[english,brazilian]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage[top=20mm, bottom=20mm, left=20mm, right=20mm]{geometry}
+\usepackage{framed}
+\usepackage{booktabs}% Pacote para deixar tabelas mais bonitas.
+\usepackage{color}% Pacote de Cores
+\usepackage{hyperref}% Pacotes para Hiperlinks
+\usepackage{graphicx}% Pacote de imagens
+\usepackage{amsmath,amsfonts,amscd,bezier,amsthm,amssymb}
+\usepackage{tikz}
+\usepackage{fancyvrb}
+\usepackage{alltt}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{setspace}
+\usepackage{pdfpages}
+\usepackage{soul}
+\usepackage{hyperref}
+\usetikzlibrary{automata,positioning}
+\usepackage{float}
+\usepackage{cancel}
+\usepackage{textcomp}
+\usepackage{indentfirst}
+\renewcommand{\b}{\textbf}
+\newcommand{\noi}{\noindent}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Rel}{\mathcal{R}}
+
+\definecolor{shadecolor}{rgb}{0.8,0.8,0.8}
+
+\newcommand{\universidade}{Universidade Federal de Lavras}
+\newcommand{\professor}{Luiz Henrique Andrade Correia}
+\newcommand{\caio}{CAIO DE OLIVEIRA LOPES}
+\newcommand{\ismael}{ISMAEL MARTINS SILVA}
+\newcommand{\layse}{LAYSE CRISTINA SILVA GARCIA}
+\newcommand{\luiz}{LUIZ FELIPE MONTUANI E SILVA}
+\newcommand{\disciplina}{GCC123 – Arquitetura de Computadores II}
+\newcommand{\tema}{RELATÓRIO}
+
+\newcommand{\turma}{10A}
+\newtheorem*{mydef}{Definição}
+\begin{document}
+\begin{center}
+\includegraphics[width=9cm,height=4cm]{logo-ufla-transparente.png}
+\end{center}
+
+\pagestyle{empty}
+
+\vspace{80pt}
+
+\begin{center}
+    \textbf{\caio}\\
+    \textbf{\ismael}\\
+    \textbf{\layse}\\
+    \textbf{\luiz}\\
+\end{center}
+
+\vspace{110pt}
+
+\begin{center}
+    \Large \textbf{\tema}
+\end{center}
+
+\vspace{260pt}
+
+\begin{center}
+    \textbf{LAVRAS - MG}\\
+    \textbf{2020}\\
+\end{center}
+
+\begin{center}
+    \textbf{\caio}\\
+    \textbf{\ismael}\\
+    \textbf{\layse}\\
+    \textbf{\luiz}\\
+\end{center}
+
+\vspace{50pt}
+
+\begin{center}
+    \large \textbf{\tema}
+\end{center}
+
+\vspace{110pt}
+
+\begin{center}
+    \onehalfspacing
+    Relatório apresentado à disciplina \disciplina,\\
+    como parte das exigências apresentadas no plano de curso.\\  
+\end{center}
+
+\vspace{110pt}
+
+\begin{center}
+    \onehalfspacing
+    \professor\\
+    Professor
+\end{center}
+
+\vspace{240pt}
+
+\begin{center}
+    \textbf{LAVRAS - MG}\\
+    \textbf{2020}\\
+\end{center}
+
+\newpage
+
+\section{Introdução}
+\onehalfspacing
+Será apresentado no decorrer deste relatório as respostas aos exercícios solicitados pelo professor \professor, bem como indicar os respectivos códigos que geram cada uma das respostas ali colocadas (das que forem geradas por meio de códigos).\\
+Na seção desenvolvimento serão apresentados os exercícios seguidos de suas respectivas resoluções.
+
+\section{Desenvolvimento}
+\onehalfspacing
+\subsection{Exercícios e Respostas}
+\begin{enumerate}
+    \item[\b{1.}] Escreva um programa que suporte a entrada de três vetores A, B e C e realize a multiplicação e soma de seus elementos usando a instrução SIMD do AVX (\_mm256\_fmadd\_). A entrada deve ser selecionada de acordo com o tipo de dados dos vetores double (4 x 64bits), float (8 x 32bits) ou integer (8 x 32 bits). Apresente o resultado convenientemente na tela.\\
+    
+    \b{Código que gera a resposta:} Exercicio1.c\\
+    \b{Resposta:}\\
+    A entrada é dada pelo usuário no terminal, aqui está um exemplo:\\
+    \\
+        Digite 3 vetores float com 8 elementos cada.\\
+        Cada elemento deve ser separado por um espaço em branco e cada vetor por uma quebra de linha.\\
+        7.0 7.0 7.0 7.0 7.0 7.0 7.0 7.0\\
+        2.0 2.0 2.0 2.0 2.0 2.0 2.0 2.0\\
+        5.0 5.0 5.0 5.0 5.0 5.0 5.0 5.0\\
+        Resultado da operação de floats:\\
+        19.000000 19.000000 19.000000 19.000000 19.000000 19.000000 19.000000 19.000000\\
+
+        Digite 3 vetores double com 4 elementos cada.\\
+        Cada elemento deve ser separado por um espaço em branco e cada vetor por uma quebra de linha.\\
+        7.000000 7.000000 7.000000 7.000000 7.000000 7.000000 7.000000 7.000000\\
+        2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000\\
+        5.000000 5.000000 5.000000 5.000000 5.000000 5.000000 5.000000 5.000000\\
+        Resultado da operação de double:\\
+        19.000000 19.000000 19.000000 19.000000\\
+
+        Digite 3 vetores de inteiros com 8 elementos cada.\\
+        Cada elemento deve ser separado por um espaço em branco e cada vetor por uma quebra de linha.\\
+        7 7 7 7 7 7 7 7\\
+        2 2 2 2 2 2 2 2\\
+        5 5 5 5 5 5 5 5\\
+        Resultado da operação de inteiros:\\
+        19 19 19 19 19 19 19 19\\
+    
+    \item[\b{2.}] Escreva um programa que calcule a soma de dois vetores A e B do tipo double. Os vetores A e B devem ser lidos da memória usando a instrução \_mm256\_load\_pd. O resultado da operação deve ser armazenado na memória usando a instrução \_mm256\_store\_pd.
+    
+    \begin{center}
+    \begin{tabular}{clc}
+    $for$ & $(int$ $i = 0;$ $i < 4;$ $i++)$ &  \\
+        & $c[i]$ $=$ $a[i]$ $+$ $b[i]$   &  \\
+        &                                & 
+    \end{tabular}
+    \end{center}
+    
+    \b{Código que gera a resposta:} Exercicio2.c\\
+    \b{Resposta:}\\
+    A entrada é dada pelo usuário no terminal, aqui está um exemplo:\\
+    \\
+    Digite 2 vetores double com 4 elementos cada.\\
+    Cada elemento deve ser separado por um espaço em branco e cada vetor por uma quebra de linha.\\
+    2.000000 2.000000 2.000000 2.000000\\
+    5.000000 5.000000 5.000000 5.000000\\
+    Resultado:\\
+    7.000000 7.000000 7.000000 7.000000\\
+    
+    \item[\b{3.}] Ao adicionar ou subtrair vetores inteiros, é importante verificar a diferença entre as funções \_add\_ e \_sub\_ e as funções \_adds\_ \_subs\_. O \b{s} extra significa saturação, que é produzida quando o resultado requer mais memória do que o o vetor pode armazenar. Crie um programa que exemplifique esta situaçã.000000o ao somarmos dois vetores A e B, no qual seus elementos são definidos como \_mm256\_add\_epi8 e \_mm256\_subs\_epi16. Apresente o resultado convenientemente na tela.\\
+    
+    \b{Código que gera a resposta:} Exercicio3.c\\
+    \b{Resposta:}\\
+    A entrada é dada pelo usuário no terminal, aqui está um exemplo:\\
+    \\
+    Digite 2 vetores de inteiros com 32 elementos cada.\\
+    Cada elemento deve ser separado por um espaço em branco e cada vetor por uma quebra de linha.\\
+    98 98 98 98 98 98 98 98 98 98 98 98 98 98 98 98 98 98 98 98 98 98 98 98 98 98 98 98 98 98 98 98\\
+    85 85 85 85 85 85 85 85 85 85 85 85 85 85 85 85 85 85 85 85 85 85 85 85 85 85 85 85 85 85 85 85\\
+    Sem saturacao: -73 -73 -73 -73 -73 -73 -73 -73 -73 -73 -73 -73 -73 -73 -73 -73 -73 -73 -73 -73 -73 -73 -73 -73 -73 -73 -73 -73 -73 -73 -73 -73\\
+    Digite 2 vetores de inteiros com 16 elementos cada.\\
+    Cada elemento deve ser separado por um espaço em branco e cada vetor por uma quebra de linha.\\
+    -18000 -18000 -18000 -18000 -18000 -18000 -18000 -18000 -18000 -18000 -18000 -18000 -18000 -18000 -18000 -18000\\
+    19000 19000 19000 19000 19000 19000 19000 19000 19000 19000 19000 19000 19000 19000 19000 19000\\
+    Com saturacao: -32768 -32768 -32768 -32768 -32768 -32768 -32768 -32768 -32768 -32768 -32768 -32768 -32768 -32768 -32768 -32768\\
+
+    \item[\b{4.}] Usando a instrução \_mm256\_hadd\_pd realize a soma horizontal de dois vetores conforme mostrado na figura abaixo. Apresente o resultado convenientemente na tela.
+    
+    \begin{figure}[H]
+    \centering
+    \includegraphics[width=15cm]{questão4.png}
+    \label{fig:Figura1}
+    \end{figure}
+    
+    \b{Código que gera a resposta:} Exercicio4.c\\
+    \b{Resposta:}\\
+    A entrada é dada pelo usuário no terminal, aqui está um exemplo:\\
+    \\
+    Digite 2 vetores double com 4 elementos cada.\\
+    Cada elemento deve ser separado por um espaço em branco e cada vetor por uma quebra de linha.\\
+    1.000000 2.000000 3.000000 4.000000\\
+    5.000000 6.000000 7.000000 8.000000\\
+    Resultado:\\
+    3.000000 11.000000 7.000000 15.000000\\
+
+    \item[\b{5.}] Os valores dos vetores A, B e C são do tipo double e devem ser carregado na memória via terminal. Desenvolva um programa que dado que os vetores A, B e C foram carregados, e usando uma instrução FMA (Fused Multiply and Add) realize a operação:
+    
+    \begin{center}
+    \begin{tabular}{cll}
+    $for$ & $(int$ $i = 0;$ $i < 4;$ $i++)$ & \{ \\
+          & $d[i]$ $=$ $a[i]$ $*$ $b[i]$ & \\
+          & $d[i]$ $=$ $d[i]$ $+$ $c[i]$ & \\
+    \multicolumn{1}{l}{\}} &  &
+    \end{tabular}
+    \end{center}
+    
+    \b{Código que gera a resposta:} Exercicio5.c\\
+    \b{Resposta:}\\
+    A entrada é dada pelo usuário no terminal, aqui está um exemplo:\\
+    
+   \item[\b{6.}] Os intrínsecos \_permute\_ aceitam dois argumentos: um vetor de entrada e um valor de controle de 8 bits. Os bits do valor de controle determinam qual dos elementos do vetor de entrada é inserido na saída. Usando a instrução intrínseca \_mm256\_permute\_ps encontre o valor de controle de oito bits e realize a permuta conforme a figura abaixo. Apresente na tela o vetor de entrada, o valor do controle e o vetor de resultado.
+   
+    \begin{figure}[H]
+    \centering
+    \includegraphics[width=15cm]{questão6.png}
+    \label{fig:Figura1}
+    \end{figure}
+   
+   \b{Código que gera a resposta:} Exercicio6.c\\
+   \b{Resposta:}\\
+   A entrada é dada pelo usuário no terminal, aqui está um exemplo:\\
+   
+   \item[\b{7.}] A função intrínseca \_shuffle\_ seleciona elementos de entrada para um ou dois vetores de 256 bits e os colocam no vetor de saída de acordo com um terceiro elemento de 8 bits, que determina quais elementos devem ser colocados no vetor de saída. Encontre o valor do terceiro elemento e implemente um programa que realize o embaralhamento mostrado na figura abaixo, usando a instrução \_mm256\_shuffle\_ps (vec1, vec2, 0bxxxxxxxx).
+   
+    \begin{figure}[H]
+    \centering
+    \includegraphics[width=15cm]{questão7.png}
+    \label{fig:Figura1}
+    \end{figure}
+   
+   \b{Código que gera a resposta:} Exercicio7.c\\
+   \b{Resposta:}\\
+    A entrada é dada pelo usuário no terminal, aqui está um exemplo:\\
+   
+   \item[\b{8.}] Dado o exemplo de código para multiplicação de elementos complexos na página 14 do tutorial, seção 7. Implemente um código em que as entradas são inseridas via terminal, realize a operação solicitada e mostre o resultado na tela. \b{Explique como são realizados os cálculos}.\\
+   
+   \b{Código que gera a resposta:} Exercicio8.c\\
+   \b{Resposta:}\\
+    A entrada é dada pelo usuário no terminal, aqui está um exemplo:\\
+   
+\end{enumerate}
+
+\section{Conclusão}
+\onehalfspacing
+
+
+\section{Referências Bibliográficas}
+
+\begin{itemize}
+    \item Hennessy, John L. and Patterson, David A.. Computer Architecture, Fifith Edition: A Quantitative Approach. Morgan Kaufmann Publishers Inc., 2012.
+    
+    \item Luiz H. A.. Notas de aula da disciplina Arquitetura de Computadores 2. Capítulo 5.\\
+    Universidade Federal de Lavras. Acessado em Agosto de 2020.
+
+    \item SCARPINO, Matt. Crunching Numbers with AVX and AVX2. Code Project official page.\\
+    \url{https://www.codeproject.com/Articles/874396/Crunching-Numbers-with-AVX-and-AVX}.\\
+    Acessado em Agosto de 2020.
+
+    \item Intel Corporation. Intrinsic Guide.\\
+    \url{https://software.intel.com/sites/landingpage/IntrinsicsGuide/}. \\
+    Acessado em Agosto de 2020.
+
+\end{itemize}
+\end{document}

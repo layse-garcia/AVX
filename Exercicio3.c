@@ -24,7 +24,7 @@ void soma() {
 
     int vecD[32];
 
-    printf("Digite 3 vetores de inteiros com 32 elementos cada.\nCada elemento deve ser separado por um espaço em branco e cada vetor por uma quebra de linha.\n");
+    printf("Digite 2 vetores de inteiros com 32 elementos cada.\nCada elemento deve ser separado por um espaço em branco e cada vetor por uma quebra de linha.\n");
     fflush(stdout);
 
     for(int j = 0; j < 2; j++) {
@@ -68,7 +68,7 @@ void subtracao() {
 
     int vecD[16];
 
-    printf("Digite 3 vetores de inteiros com 16 elementos cada.\nCada elemento deve ser separado por um espaço em branco e cada vetor por uma quebra de linha.\n");
+    printf("Digite 2 vetores de inteiros com 16 elementos cada.\nCada elemento deve ser separado por um espaço em branco e cada vetor por uma quebra de linha.\n");
     fflush(stdout);
 
     for(int j = 0; j < 2; j++) {
