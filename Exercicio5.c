@@ -20,7 +20,7 @@ void doubles4(__m256d vecA, __m256d vecB, __m256d vecC) {
 
     printf("Resultado da operação de double: \n");
     double* f = (double*)&result;
-    printf("%f %f %f %f\n",
+    printf("%lf %lf %lf %lf\n",
       f[0], f[1], f[2], f[3]);
 }
 
@@ -34,13 +34,13 @@ void pegaDouble() {
     for(int j = 0; j < 3; j++) {
         for(int i = 0; i < 4; i++) {
             if (j == 0) {
-                scanf("%Le",&a[i]);
+                scanf("%lf",&a[i]);
             }
             else if (j == 1) {
-                scanf("%Le",&b[i]);
+                scanf("%lf",&b[i]);
             }
             else {
-                scanf("%Le",&c[i]);
+                scanf("%lf",&c[i]);
             }
         }
     }

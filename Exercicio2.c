@@ -24,10 +24,10 @@ void executaLoad_Soma_Store() {
     for(int j = 0; j < 2; j++) {
         for(int i = 0; i < 4; i++) {
             if (j == 0) {
-                scanf("%Le",&a[i]);
+                scanf("%lf",&a[i]);
             }
             else {
-                scanf("%Le",&b[i]);
+                scanf("%lf",&b[i]);
             }
         }
     }
@@ -38,8 +38,8 @@ void executaLoad_Soma_Store() {
 
     _mm256_store_pd(c, vecC);
 
-printf("Resultado: \n");
-    printf("%f %f %f %f\n",
+    printf("Resultado: \n");
+    printf("%lf %lf %lf %lf\n",
            c[0], c[1], c[2], c[3]);
 }
 

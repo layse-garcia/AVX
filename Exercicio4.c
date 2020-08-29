@@ -25,7 +25,7 @@ void somaHorizontal() {
 
     for(int j = 0; j < 2; j++) {
         for(int i = 0; i < 4; i++) {
-            scanf("%Le",&vecD[i]);
+            scanf("%lf",&vecD[i]);
         }
         if (j == 0) {
             vecA = _mm256_setr_pd(vecD[0], vecD[1], vecD[2], vecD[3]);
@@ -40,7 +40,7 @@ void somaHorizontal() {
     double* f = (double*)&vecC;
     
     printf("Resultado: \n");
-    printf("%f %f %f %f\n",
+    printf("%lf %lf %lf %lf\n",
       f[0], f[1], f[2], f[3]);
 
     printf("\n");
@@ -49,5 +49,6 @@ void somaHorizontal() {
 // Função Principal
 int main() {
     somaHorizontal();
+    
     return 0;
 }
