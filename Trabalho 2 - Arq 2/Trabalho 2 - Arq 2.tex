@@ -119,7 +119,7 @@ Na seção desenvolvimento serão apresentados os exercícios seguidos de suas r
 
 \section{Desenvolvimento}
 \onehalfspacing
-\subsection{Exercícios e Respostas}
+\subsection*{Exercícios e Respostas}
 \begin{enumerate}
     \item[\b{1.}] Escreva um programa que suporte a entrada de três vetores A, B e C e realize a multiplicação e soma de seus elementos usando a instrução SIMD do AVX (\_mm256\_fmadd\_). A entrada deve ser selecionada de acordo com o tipo de dados dos vetores double (4 x 64bits), float (8 x 32bits) ou integer (8 x 32 bits). Apresente o resultado convenientemente na tela.\\
     
@@ -222,6 +222,14 @@ Na seção desenvolvimento serão apresentados os exercícios seguidos de suas r
     \b{Código que gera a resposta:} Exercicio5.c\\
     \b{Resposta:}\\
     A entrada é dada pelo usuário no terminal, aqui está um exemplo:\\
+    \\
+    Digite 3 vetores double com 4 elementos cada.\\
+    Cada elemento deve ser separado por um espaço em branco e cada vetor por uma quebra de linha.\\
+    7.000000 7.000000 7.000000 7.000000 7.000000 7.000000 7.000000 7.000000\\
+    2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000 2.000000\\
+    5.000000 5.000000 5.000000 5.000000 5.000000 5.000000 5.000000 5.000000\\
+    Resultado da operação de double:\\
+    19.000000 19.000000 19.000000 19.000000\\
     
    \item[\b{6.}] Os intrínsecos \_permute\_ aceitam dois argumentos: um vetor de entrada e um valor de controle de 8 bits. Os bits do valor de controle determinam qual dos elementos do vetor de entrada é inserido na saída. Usando a instrução intrínseca \_mm256\_permute\_ps encontre o valor de controle de oito bits e realize a permuta conforme a figura abaixo. Apresente na tela o vetor de entrada, o valor do controle e o vetor de resultado.
    
@@ -233,8 +241,13 @@ Na seção desenvolvimento serão apresentados os exercícios seguidos de suas r
    
    \b{Código que gera a resposta:} Exercicio6.c\\
    \b{Resposta:}\\
-   A entrada é dada pelo usuário no terminal, aqui está um exemplo:\\
-   
+   \\
+   1.000000 2.000000 3.000000 4.000000 5.000000 6.000000 7.000000 8.000000\\
+   Controle para a primeira metade do vetor: 10 00 01 11\\
+   Controle para a segunda metade do vetor: 00 10 01 01\\
+   Resultado da operação de permutação:\\
+   3.000000 1.000000 2.000000 4.000000 5.000000 7.000000 6.000000 6.000000\\
+
    \item[\b{7.}] A função intrínseca \_shuffle\_ seleciona elementos de entrada para um ou dois vetores de 256 bits e os colocam no vetor de saída de acordo com um terceiro elemento de 8 bits, que determina quais elementos devem ser colocados no vetor de saída. Encontre o valor do terceiro elemento e implemente um programa que realize o embaralhamento mostrado na figura abaixo, usando a instrução \_mm256\_shuffle\_ps (vec1, vec2, 0bxxxxxxxx).
    
     \begin{figure}[H]
@@ -245,18 +258,51 @@ Na seção desenvolvimento serão apresentados os exercícios seguidos de suas r
    
    \b{Código que gera a resposta:} Exercicio7.c\\
    \b{Resposta:}\\
-    A entrada é dada pelo usuário no terminal, aqui está um exemplo:\\
+   \\
+    Vetor 1:\\
+    0.000000 2.000000 4.000000 6.000000 8.000000 10.000000 12.000000 14.000000\\
+    Vetor 2:\\
+    1.000000 3.000000 5.000000 7.000000 9.000000 11.000000 13.000000 15.000000\\
+    Controle: 00 01 11 01\\
+    Vetor resultado:\\
+    0.000000 2.000000 7.000000 3.000000 8.000000 10.000000 15.000000 11.000000\\
    
    \item[\b{8.}] Dado o exemplo de código para multiplicação de elementos complexos na página 14 do tutorial, seção 7. Implemente um código em que as entradas são inseridas via terminal, realize a operação solicitada e mostre o resultado na tela. \b{Explique como são realizados os cálculos}.\\
-   
+   \\
    \b{Código que gera a resposta:} Exercicio8.c\\
    \b{Resposta:}\\
+   \b{Explicação:}\\
+   \b{Passo 1:} Multiplica o vetor 1 e o vetor 2.\\
+   \b{Passo 2:} Troca os elementos reais e imaginários do vetor 2.\\
+   \b{Passo 3:} Nega os elementos imaginários do vetor 2.\\
+   \b{Passo 4:} Multiplica vetor 1 e o vetor 2 modificado.\\
+   Subtrai horizontalmente os elementos dos vetores 3 e 4, após isso exibe os elementos do vetor resultado.\\
     A entrada é dada pelo usuário no terminal, aqui está um exemplo:\\
+    \\
+    Digite 2 vetores double com 4 elementos cada.\\
+    Cada elemento deve ser separado por um espaço em branco e cada vetor por uma quebra de linha.\\
+    1.000000 2.000000 3.000000 4.000000\\
+    5.000000 6.000000 7.000000 8.000000\\
+    Após o primeiro passo:\\
+    5.000000 12.000000 21.000000 32.000000\\
+    Após o segundo passo:\\
+    6.000000 5.000000 8.000000 7.000000\\
+    Após o terceiro passo:\\
+    6.000000 -5.000000 8.000000 -7.000000\\
+    Após o quarto passo:\\
+    6.000000 -10.000000 24.000000 -28.000000\\
+    Resultado final:\\
+    -7.000000 16.000000 -11.000000 52.000000\\
+
    
 \end{enumerate}
 
 \section{Conclusão}
-\onehalfspacing
+Mesmo com algumas dificuldades para compreender as instruções, o desenvolvimento do trabalho possibilitou um melhor entendimento de como são utilizadas as instruções de AVX e AVX2.\\
+\indent
+Foi possível também, o aprimoramento da lógica e o entendimento da matéria dada ao longo do período. Mesmo diante das dificuldades, o projeto foi concluído e serviu de conhecimento basal para a criação de projetos maiores e mais bem elaborados. \\
+\indent
+Portanto, pode-se dizer que o objetivo deste trabalho foi alcançado pelo grupo.
 
 
 \section{Referências Bibliográficas}

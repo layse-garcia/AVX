@@ -14,6 +14,7 @@
 #include <immintrin.h>
 #include <stdio.h>
 
+// Printa o vetor de float
 void printFloat(__m256 vec) {
     float *f = (float*)&vec;
 
@@ -23,16 +24,22 @@ void printFloat(__m256 vec) {
     );
 }
 
+// Função que realiza o shuffle
 void shuffle() {
     __m256 vecA = _mm256_setr_ps(0.0, 2.0, 4.0, 6.0, 8.0, 10.0, 12.0, 14.0);
     __m256 vecB = _mm256_setr_ps(1.0, 3.0, 5.0, 7.0, 9.0, 11.0, 13.0, 15.0);
 
     __m256 vecC = _mm256_shuffle_ps(vecA, vecB, _MM_SHUFFLE(1, 3, 1, 0));
 
+    printf("Vetor 1:\n");
     printFloat(vecA);
-    
+
+    printf("Vetor 2:\n");
     printFloat(vecB);
 
+    printf("Controle: 00 01 11 01\n");
+
+    printf("Vetor resultado:\n");
     printFloat(vecC);
 }
 

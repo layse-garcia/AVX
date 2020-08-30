@@ -14,7 +14,8 @@
 #include <immintrin.h>
 #include <stdio.h>
 
-void printDouple(__m256d vec) {
+// Printa o vetor de double
+void printDouble(__m256d vec) {
     double *d = (double*)&vec;
 
     printf(
@@ -23,6 +24,7 @@ void printDouple(__m256d vec) {
     );
 }
 
+// Método que recebe os valores dos vetores de DOUBLE
 __m256d pegaDouble() {
     double vec[4];
 
@@ -35,40 +37,38 @@ __m256d pegaDouble() {
 
 // Função Principal
 int main() {
+    printf("Digite 2 vetores double com 4 elementos cada.\nCada elemento deve ser separado por um espaço em branco e cada vetor por uma quebra de linha.\n");
+    fflush(stdout);
     __m256d vec1 = pegaDouble();
     __m256d vec2 = pegaDouble();
     __m256d neg = _mm256_setr_pd(1.0, -1.0, 1.0, -1.0);
 
-    printDouple(neg);
-
-    /* Step 1: Multiply vec1 and vec2 */
+    /* Passo 1: Multiplica o vetor 1 e o vetor 2 */
     __m256d vec3 = _mm256_mul_pd(vec1, vec2);
+    printf("Após o primeiro passo:\n");
+    printDouble(vec3);
 
-    printDouple(vec3);
-
-    /* Step 2: Switch the real and imaginary elements of vec2 */
+    /* Passo 2: Troca os elementos reais e imaginários do vetor 2 */
     vec2 = _mm256_permute_pd(vec2, 0x5);
+    printf("Após o segundo passo:\n");
+    printDouble(vec2);
 
-    printDouple(vec2);
-
-    /* Step 3: Negate the imaginary elements of vec2 */
+    /* Passo 3: Nega os elementos imaginários do vetor 2 */
     vec2 = _mm256_mul_pd(vec2, neg);
+    printf("Após o terceiro passo:\n");
+    printDouble(vec2);
 
-    printDouple(vec2);
-
-    /* Step 4: Multiply vec1 and the modified vec2 */
+    /* Passo 4: Multiplica vetor 1 e o vetor 2 modificado */
     __m256d vec4 = _mm256_mul_pd(vec1, vec2);
+    printf("Após o quarto passo:\n");
+    printDouble(vec4);
 
-    printDouple(vec4);
-
-    /* Horizontally subtract the elements in vec3 and vec4 */
+    /* Subtrai horizontalmente os elementos dos vetores 3 e 4 */
     vec1 = _mm256_hsub_pd(vec3, vec4);
 
-    printDouple(vec1);
-
-    /* Display the elements of the result vector */
-    double* res = (double*)&vec1;
-    printf("%lf %lf %lf %lf\n", res[0], res[1], res[2], res[3]);
+    /* Exibe os elementos do vetor resultado */
+    printf("Resultado final:\n");
+    printDouble(vec1);
 
     return 0;
 }
